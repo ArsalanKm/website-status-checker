@@ -23,9 +23,12 @@ func main(){
 	}
 // Adding time.sleep to this for loop will stop main routin
 // So we create function literal and make timer on there
+    ticker := time.NewTicker(5 * time.Second)
+
 	for l:=range c {
 		go func(link  string){
-		time.Sleep(5 * time.Second)
+			  <-ticker.C
+		// time.Sleep(5 * time.Second)
 		checkLink(link,c)
 		}(l)
 	}
